@@ -1,0 +1,15 @@
+/target
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+*.npz
+*.pt
+*.bin
+*.mp3
+*.wav
+*.zip
+*.pdf
+audio_cache/
+data/
+speech_data/
