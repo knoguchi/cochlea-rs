@@ -2,11 +2,19 @@
 name = "cochlea-rs"
 version = "0.1.0"
 edition = "2021"
+authors = ["Kenji Noguchi <tokyo246@gmail.com>"]
 description = "Rust port of the Zilany et al. (2014) auditory periphery model"
 license = "GPL-3.0"
+readme = "README.md"
 keywords = ["audio", "cochlea", "neuroscience", "auditory"]
 categories = ["science", "simulation"]
 repository = "https://github.com/knoguchi/cochlea-rs"
+exclude = [
+    "*.csv",
+    "*.png",
+    "*.py",
+    "target/",
+]
 
 # Credits:
 # Rust port of cochlea Python library by Marek Rudnicki
@@ -17,15 +25,8 @@ repository = "https://github.com/knoguchi/cochlea-rs"
 
 [lib]
 name = "cochlea"
-crate-type = ["cdylib", "rlib"]
-
-[features]
-default = ["python"]
-python = ["pyo3", "numpy"]
 
 [dependencies]
-pyo3 = { version = "0.23", features = ["extension-module"], optional = true }
-numpy = { version = "0.23", optional = true }
 rand = "0.8"
 rand_distr = "0.4"
 rustfft = "6.2"

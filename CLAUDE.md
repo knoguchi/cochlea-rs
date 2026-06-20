@@ -9,14 +9,11 @@ Rust port of the Zilany et al. (2014) auditory periphery model. Converts sound t
 ## Build Commands
 
 ```bash
-cargo build --no-default-features        # Rust only (no Python)
-cargo test --no-default-features         # Run tests
-cargo test --no-default-features test_tone_response  # Single test
-cargo bench --no-default-features        # Benchmarks (Criterion)
-maturin develop --release                # Python bindings
+cargo build                              # Build
+cargo test                               # Run tests
+cargo test test_tone_response            # Single test
+cargo bench                              # Benchmarks (Criterion)
 ```
-
-Use `--no-default-features` to skip PyO3/Python bindings for pure Rust development.
 
 ## Architecture
 

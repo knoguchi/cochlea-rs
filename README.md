@@ -15,11 +15,8 @@ Sound → Middle Ear → Inner Hair Cell → Synapse → Spike Generator → spi
 - **O(n) power-law adaptation** — fixes O(n²) bug in original implementations
 - **Parallel processing** across cochlear channels via Rayon
 - **Reproducible** — optional seed for deterministic stochastic components
-- **Python bindings** via PyO3
 
 ## Usage
-
-### Rust
 
 ```rust
 use cochlea::{run_zilany2014, ModelConfig, Species, AnfType, generate_cfs};
@@ -40,21 +37,6 @@ let output = run_zilany2014(&signal, &cfs, &config);
 for channel in &output.channels {
     println!("CF {:.0} Hz: {} spikes", channel.cf, channel.spike_times.len());
 }
-```
-
-### Python
-
-```bash
-pip install maturin
-maturin develop --release
-```
-
-```python
-import cochlea
-
-cfs = cochlea.generate_cfs_py(200, 8000, 30, species="human")
-result = cochlea.run_zilany2014_full(signal, fs=100000, cfs=cfs, species="human")
-spike_times = result["spike_times"]
 ```
 
 ## Credits
