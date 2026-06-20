@@ -20,5 +20,8 @@ pub mod spike_generator;
 pub mod synapse;
 
 // Re-exports for convenience
-pub use model::{generate_cfs, run_channel, run_model_simple, run_zilany2014, ModelConfig, ModelOutput, Species};
+pub use model::{
+    generate_cfs, run_channel, run_model_simple, run_zilany2014, ChannelOutput, Cochlea,
+    ModelConfig, ModelOutput, Species,
+};
 pub use synapse::AnfType;

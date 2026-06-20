@@ -1,6 +1,6 @@
 [package]
 name = "cochlea-rs"
-version = "1.0.0"
+version = "1.1.0"
 edition = "2021"
 authors = ["Kenji Noguchi <tokyo246@gmail.com>"]
 description = "Rust port of the Zilany et al. (2014) auditory periphery model"
