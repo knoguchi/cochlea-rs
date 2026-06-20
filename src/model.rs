@@ -1,11 +1,4 @@
 //! Top-level Zilany 2014 cochlear model API.
-//!
-//! Provides both:
-//! - The [`Cochlea`] struct with builder-style construction and `simulate*` methods
-//!   (the canonical, Rust-native API).
-//! - Free functions `run_zilany2014`, `run_channel`, `run_model_simple`, `generate_cfs`
-//!   (preserved for backwards compatibility with the original port; they delegate into
-//!   the canonical implementation).
 
 use rand::Rng;
 use rand::rngs::StdRng;
@@ -340,35 +333,22 @@ impl Default for Cochlea {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Legacy free-function API. Preserved for backwards compatibility.
-// These delegate INTO `Cochlea` rather than the reverse.
-// ---------------------------------------------------------------------------
-
-/// Run the complete Zilany 2014 model for a single CF.
-///
-/// **Legacy API** — prefer [`Cochlea::simulate_channel`].
+/// Run the Zilany 2014 model for a single CF.
 pub fn run_channel<R: Rng>(signal: &[f64], cf: f64, config: &ModelConfig, rng: &mut R) -> ChannelOutput {
     Cochlea::with_config(config.clone()).simulate_channel(signal, cf, rng)
 }
 
-/// Run the complete Zilany 2014 model for multiple CFs.
-///
-/// **Legacy API** — prefer [`Cochlea::simulate`].
+/// Run the Zilany 2014 model for multiple CFs.
 pub fn run_zilany2014(signal: &[f64], cfs: &[f64], config: &ModelConfig) -> ModelOutput {
     Cochlea::with_config(config.clone()).simulate(signal, cfs)
 }
 
 /// Generate characteristic frequencies spaced according to the Greenwood function.
-///
-/// **Legacy API** — prefer [`Species::cfs`].
 pub fn generate_cfs(freq_min: f64, freq_max: f64, num_cfs: usize, species: Species) -> Vec<f64> {
     species.cfs(freq_min, freq_max, num_cfs)
 }
 
-/// Convenience function with simplified (string-based) parameters.
-///
-/// **Legacy API** — prefer [`Cochlea`] with builder methods.
+/// Run with string-based parameters.
 pub fn run_model_simple(
     signal: &[f64],
     fs: f64,
